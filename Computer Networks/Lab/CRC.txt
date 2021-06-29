@@ -1,0 +1,62 @@
+#include <stdio.h> 
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#define N strlen(g)
+
+char k[8],t[33],g[10],cs[33];
+int a,e,c;
+void xorfunction(){
+    for(c=1;c<N;c++)
+        cs[c] = ((cs[c]==g[c]) ? '0': '1');        
+}
+
+void crc(){
+    for(e=0;e<N;e++){
+        cs[e]=t[e];   
+    }
+    do {
+        if (cs[0]=='1')
+            xorfunction();
+        for(c=0;c<N-1;c++)
+            cs[c]=cs[c+1];
+        cs[c]=t[e++];}
+    while(e<=a+N-1);
+                
+    }
+    
+
+
+int main() 
+{ 
+    printf("Enter number of bits : ");
+    scanf("%s",&k);
+    printf("Enter Frame");
+    scanf("%s",&t);
+    printf("Enter Generator : %s",g);
+    scanf("%s",&g);
+    a=strlen(t);
+    for(e=a;e<a+N-1;e++)
+        t[e]='0';
+    printf("***********%s*******",k);
+    printf("\nAppended data %s ",t);
+    crc();
+    printf("\nCRC is %s ",cs);
+    for(e=a;e<a+N-1;e++)
+        t[e]=cs[e-a];
+    printf("\nTransmitted frame(receiver) :\n %s",t);
+    crc();
+    printf("\nCRC is %s",cs);
+    for(e=0;(e<N-1)&&(cs[e]!='1');e++);{
+    if((e<N-1)){
+        printf("\n  Error Detected\n");}
+    else
+        printf("\nNo Error Detected");
+                                       }
+    }
+    
+   
+                    
+    
+                    
+   

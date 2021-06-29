@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main()
+{
+    int N;
+    int W;
+    int i,j,ch;
+    printf("Enter Number of Frames: ");
+    scanf("%d",&N);
+    printf("\nEnter Window Size :");
+    scanf("%d",&W);
+    for(i=0;i<W;i++){
+        printf("\nFrames %d was transmitted",i+1);
+    }
+    for(j=0;j<N;j++){
+        printf("\nDid you receive frame %d 1 for yes 2 for No : ",j+1);
+        scanf("%d",&ch);
+        switch(ch){
+                case 1:printf("\nAcknowledgement sent for frame %d",j+1);
+                printf("\nWindow has the following frames\n ");
+                for(i=j+1;i<j+1+W;i++){
+                    if(i<N)
+                        printf("%d\n",i+1);
+                }
+                break;
+            case 2:
+                printf("\nRetransmitting Frames");
+                for(i=j;i<j;i++){
+                    if(i<N)
+                        printf("%d\t",i+1);
+                }
+                j--;
+                break;
+            default:printf("Invalid Input");
+                
+                
+                    
+                    
+        }}return 0;
+   
+    
+}
